@@ -1,15 +1,14 @@
 import type { Metadata } from 'next'
-import { Inter, JetBrains_Mono } from 'next/font/google'
+import { Outfit, JetBrains_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const inter = Inter({ subsets: ["latin"], variable: '--font-inter' });
+const outfit = Outfit({ subsets: ["latin"], variable: '--font-outfit' });
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: '--font-jetbrains-mono' });
 
 export const metadata: Metadata = {
   title: 'SentinelAgent - Federal Security Framework',
   description: 'Intent-verified delegation chains for federal multi-agent AI systems',
-  generator: 'v0.app',
   icons: {
     icon: [
       {
@@ -35,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`${outfit.variable} ${jetbrainsMono.variable}`}>
       <body className="font-sans antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}

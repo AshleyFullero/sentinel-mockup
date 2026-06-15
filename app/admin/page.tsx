@@ -1,13 +1,13 @@
 'use client'
 
 import { SentinelHeader } from '@/components/sentinel-header'
-import { CitizenPortal } from '@/components/citizen-portal'
+import { AdminDashboard } from '@/components/admin-dashboard'
 
-export default function Home() {
+export default function AdminPage() {
   return (
     <div className="min-h-screen bg-background">
       <SentinelHeader />
-      <CitizenPortal />
+      <AdminDashboard />
     </div>
   )
 }
