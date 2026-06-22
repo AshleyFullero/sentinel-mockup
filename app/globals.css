@@ -179,11 +179,11 @@
 /* Apply animations to elements */
 .glass-card {
   animation: slide-in-up 0.4s ease-out;
+  transition: all 0.3s ease;
 }
 
 /* Hover effects */
 .glass-card:hover {
   border-color: #bfdbfe;
   box-shadow: 0 4px 20px rgba(37, 99, 235, 0.1);
-  transition: all 0.3s ease;
 }
