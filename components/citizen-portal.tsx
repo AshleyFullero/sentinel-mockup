@@ -79,13 +79,13 @@ export function CitizenPortal() {
     <div className="min-h-screen bg-background pt-20 pb-8">
       <div className="max-w-3xl mx-auto px-4">
         {/* Tabs */}
-        <div className="flex gap-2 mb-8 border-b border-white/10">
+        <div className="flex gap-2 mb-8 border-b border-slate-200">
           <button
             onClick={() => { setActiveTab('approved'); setInputVal(''); }}
             className={`pb-3 px-4 font-medium text-sm transition-colors ${
               activeTab === 'approved'
-                ? 'border-b-2 border-cyan-400 text-cyan-400'
-                : 'text-muted-foreground hover:text-foreground'
+                ? 'border-b-2 border-blue-600 text-blue-700'
+                : 'text-slate-500 hover:text-slate-800'
             }`}
           >
             Approved Request Flow
@@ -94,8 +94,8 @@ export function CitizenPortal() {
             onClick={() => { setActiveTab('blocked'); setInputVal(''); }}
             className={`pb-3 px-4 font-medium text-sm transition-colors ${
               activeTab === 'blocked'
-                ? 'border-b-2 border-amber-400 text-amber-400'
-                : 'text-muted-foreground hover:text-foreground'
+                ? 'border-b-2 border-amber-500 text-amber-700'
+                : 'text-slate-500 hover:text-slate-800'
             }`}
           >
             Blocked Request Flow
@@ -105,11 +105,11 @@ export function CitizenPortal() {
         {activeTab === 'approved' && (
           <div className="space-y-6">
             <div className="space-y-2">
-              <h2 className="text-2xl font-bold text-foreground">Federal Services Assistant</h2>
-              <p className="text-muted-foreground text-sm">Powered by SentinelAgent — Secure AI Processing</p>
+              <h2 className="text-2xl font-bold text-slate-900">Federal Services Assistant</h2>
+              <p className="text-slate-500 text-sm">Powered by SentinelAgent — Secure AI Processing</p>
               <div className="flex items-center gap-2 mt-3">
-                <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
-                <span className="text-xs text-emerald-400 font-medium">Secure Connection</span>
+                <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
+                <span className="text-xs text-emerald-600 font-semibold">Secure Connection</span>
               </div>
             </div>
 
@@ -120,10 +120,10 @@ export function CitizenPortal() {
                   className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   <div
-                    className={`max-w-md px-4 py-3 rounded-lg ${
+                    className={`max-w-md px-4 py-3 rounded-lg text-sm ${
                       msg.type === 'user'
-                        ? 'bg-slate-700 text-foreground rounded-br-none'
-                        : 'glass text-foreground border border-cyan-500/30 whitespace-pre-wrap'
+                        ? 'bg-blue-600 text-white rounded-br-none shadow-sm'
+                        : 'bg-white text-slate-700 border border-slate-200 shadow-sm whitespace-pre-wrap'
                     }`}
                   >
                     {msg.content}
@@ -133,7 +133,7 @@ export function CitizenPortal() {
 
               {apprPhase === 'processing' && (
                 <div className="flex justify-start">
-                  <div className="max-w-md px-4 py-3 rounded-lg glass text-muted-foreground border border-cyan-500/30 animate-pulse">
+                  <div className="max-w-md px-4 py-3 rounded-lg bg-white text-slate-400 border border-slate-200 shadow-sm animate-pulse text-sm">
                     Processing request...
                   </div>
                 </div>
@@ -141,40 +141,40 @@ export function CitizenPortal() {
 
               {apprPhase === 'done' && (
                 <>
-                  <div className="mt-8 space-y-3 p-4 glass rounded-lg border border-cyan-400/20 animate-fade-in">
-                    <h3 className="text-sm font-semibold text-cyan-400">Processing Status</h3>
+                  <div className="mt-8 space-y-3 p-4 bg-white rounded-lg border border-blue-100 shadow-sm animate-fade-in">
+                    <h3 className="text-sm font-semibold text-blue-700">Processing Status</h3>
                     {steps.map((step, idx) => (
                       <div key={step.id} className="flex items-start gap-3" style={{ animationDelay: `${idx * 50}ms` }}>
                         <div className="mt-1">
-                          <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+                          <CheckCircle2 className="w-5 h-5 text-emerald-500" />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm text-foreground">{step.label}</p>
+                          <p className="text-sm text-slate-700">{step.label}</p>
                         </div>
                         {step.timestamp && (
-                          <span className="text-xs text-muted-foreground whitespace-nowrap">{step.timestamp}</span>
+                          <span className="text-xs text-slate-400 whitespace-nowrap">{step.timestamp}</span>
                         )}
                       </div>
                     ))}
                   </div>
 
-                  <div className="glass rounded-lg border border-emerald-500/30 p-4 mt-6 animate-fade-in">
+                  <div className="bg-white rounded-lg border border-emerald-200 shadow-sm p-4 mt-6 animate-fade-in">
                     <div className="space-y-4">
-                      <p className="text-foreground">
+                      <p className="text-slate-800 text-sm font-medium">
                         Great news! Your request has been processed successfully.
                       </p>
                       <div className="space-y-2 text-sm">
                         <div>
-                          <span className="text-muted-foreground">📋 Status: </span>
-                          <span className="text-emerald-400 font-semibold">Approved</span>
+                          <span className="text-slate-500">📋 Status: </span>
+                          <span className="text-emerald-600 font-semibold">Approved</span>
                         </div>
                         <div>
-                          <span className="text-muted-foreground">📄 Reference: </span>
-                          <span className="font-mono text-cyan-400">DBR-2026-0517-4821</span>
+                          <span className="text-slate-500">📄 Reference: </span>
+                          <span className="font-mono text-blue-600">DBR-2026-0517-4821</span>
                         </div>
                         <div>
-                          <span className="text-muted-foreground">📬 Next Steps: </span>
-                          <span className="text-foreground">A formal notification letter has been sent to your registered mailing address. You should receive it within 5-7 business days.</span>
+                          <span className="text-slate-500">📬 Next Steps: </span>
+                          <span className="text-slate-700">A formal notification letter has been sent to your registered mailing address. You should receive it within 5-7 business days.</span>
                         </div>
                       </div>
                     </div>
@@ -183,13 +183,13 @@ export function CitizenPortal() {
               )}
             </div>
 
-            <form onSubmit={handleApprSubmit} className="space-y-4 pt-4 border-t border-white/10">
+            <form onSubmit={handleApprSubmit} className="space-y-4 pt-4 border-t border-slate-200">
               <Input
                 value={inputVal}
                 onChange={e => setInputVal(e.target.value)}
                 type="text"
                 placeholder="Type your request here..."
-                className="bg-white/5 border-white/10 text-foreground placeholder:text-muted-foreground"
+                className="bg-white border-slate-200 text-slate-800 placeholder:text-slate-400 focus:border-blue-400"
                 disabled={apprPhase === 'processing'}
               />
             </form>
@@ -199,11 +199,11 @@ export function CitizenPortal() {
         {activeTab === 'blocked' && (
           <div className="space-y-6">
             <div className="space-y-2">
-              <h2 className="text-2xl font-bold text-foreground">Federal Services Assistant</h2>
-              <p className="text-muted-foreground text-sm">Security Policy Protection Demo</p>
+              <h2 className="text-2xl font-bold text-slate-900">Federal Services Assistant</h2>
+              <p className="text-slate-500 text-sm">Security Policy Protection Demo</p>
               <div className="flex items-center gap-2 mt-3">
-                <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
-                <span className="text-xs text-emerald-400 font-medium">Secure Connection</span>
+                <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
+                <span className="text-xs text-emerald-600 font-semibold">Secure Connection</span>
               </div>
             </div>
 
@@ -214,10 +214,10 @@ export function CitizenPortal() {
                   className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   <div
-                    className={`max-w-md px-4 py-3 rounded-lg ${
+                    className={`max-w-md px-4 py-3 rounded-lg text-sm ${
                       msg.type === 'user'
-                        ? 'bg-slate-700 text-foreground rounded-br-none'
-                        : 'glass text-foreground border border-cyan-500/30 whitespace-pre-wrap'
+                        ? 'bg-blue-600 text-white rounded-br-none shadow-sm'
+                        : 'bg-white text-slate-700 border border-slate-200 shadow-sm whitespace-pre-wrap'
                     }`}
                   >
                     {msg.content}
@@ -227,7 +227,7 @@ export function CitizenPortal() {
 
               {blkPhase === 'processing' && (
                 <div className="flex justify-start">
-                  <div className="max-w-md px-4 py-3 rounded-lg glass text-muted-foreground border border-cyan-500/30 animate-pulse">
+                  <div className="max-w-md px-4 py-3 rounded-lg bg-white text-slate-400 border border-slate-200 shadow-sm animate-pulse text-sm">
                     Verifying request...
                   </div>
                 </div>
@@ -235,28 +235,28 @@ export function CitizenPortal() {
 
               {blkPhase === 'done' && (
                 <>
-                  <div className="glass rounded-lg border border-amber-500/30 p-4 bg-amber-500/5 animate-fade-in">
+                  <div className="bg-amber-50 rounded-lg border border-amber-200 p-4 animate-fade-in shadow-sm">
                     <div className="space-y-4">
                       <div className="flex items-start gap-3">
-                        <AlertCircle className="w-5 h-5 text-amber-400 flex-shrink-0 mt-1" />
+                        <AlertCircle className="w-5 h-5 text-amber-500 flex-shrink-0 mt-1" />
                         <div className="flex-1">
-                          <p className="text-foreground font-semibold mb-2">Unable to Process Request</p>
-                          <p className="text-foreground text-sm">
+                          <p className="text-slate-800 font-semibold mb-2 text-sm">Unable to Process Request</p>
+                          <p className="text-slate-600 text-sm">
                             I'm sorry, but I am unable to fulfill this request. This action would violate federal data protection policies.
                           </p>
                         </div>
                       </div>
 
-                      <div className="bg-background/50 rounded p-3 border border-white/10">
+                      <div className="bg-white rounded p-3 border border-amber-100">
                         <div className="text-sm space-y-2">
                           <div className="flex items-center gap-2">
-                            <Lock className="w-4 h-4 text-amber-400" />
-                            <span className="text-amber-400 font-medium">Security Notice:</span>
+                            <Lock className="w-4 h-4 text-amber-500" />
+                            <span className="text-amber-700 font-medium">Security Notice:</span>
                           </div>
-                          <p className="text-foreground text-sm">
+                          <p className="text-slate-700 text-sm">
                             For your protection, certain data transfers and actions are restricted to authorized government systems only.
                           </p>
-                          <p className="text-muted-foreground text-xs">
+                          <p className="text-slate-400 text-xs">
                             You can request physical copies or perform actions through official portals by visiting your local agency office.
                           </p>
                         </div>
@@ -264,21 +264,21 @@ export function CitizenPortal() {
                     </div>
                   </div>
 
-                  <div className="mt-8 space-y-3 p-4 glass rounded-lg animate-fade-in">
-                    <h3 className="text-sm font-semibold text-amber-400">Security Checks</h3>
+                  <div className="mt-8 space-y-3 p-4 bg-white rounded-lg border border-slate-200 shadow-sm animate-fade-in">
+                    <h3 className="text-sm font-semibold text-amber-600">Security Checks</h3>
                     {blockedSteps.map((step) => (
                       <div key={step.id} className="flex items-start gap-3">
-                        <CheckCircle2 className="w-5 h-5 text-emerald-400 mt-1" />
+                        <CheckCircle2 className="w-5 h-5 text-emerald-500 mt-1" />
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm text-foreground">{step.label}</p>
+                          <p className="text-sm text-slate-700">{step.label}</p>
                         </div>
                       </div>
                     ))}
-                    <div className="flex items-start gap-3 pt-2 border-t border-white/10">
-                      <AlertCircle className="w-5 h-5 text-rose-400 mt-1" />
+                    <div className="flex items-start gap-3 pt-2 border-t border-slate-100">
+                      <AlertCircle className="w-5 h-5 text-red-500 mt-1" />
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-rose-400">Intent Verification Failed</p>
-                        <p className="text-xs text-muted-foreground mt-1">Request detected as drift from original scope</p>
+                        <p className="text-sm font-medium text-red-600">Intent Verification Failed</p>
+                        <p className="text-xs text-slate-400 mt-1">Request detected as drift from original scope</p>
                       </div>
                     </div>
                   </div>
@@ -286,13 +286,13 @@ export function CitizenPortal() {
               )}
             </div>
 
-            <form onSubmit={handleBlkSubmit} className="space-y-4 pt-4 border-t border-white/10">
+            <form onSubmit={handleBlkSubmit} className="space-y-4 pt-4 border-t border-slate-200">
               <Input
                 value={inputVal}
                 onChange={e => setInputVal(e.target.value)}
                 type="text"
                 placeholder="Type your request here..."
-                className="bg-white/5 border-white/10 text-foreground placeholder:text-muted-foreground"
+                className="bg-white border-slate-200 text-slate-800 placeholder:text-slate-400 focus:border-blue-400"
                 disabled={blkPhase === 'processing'}
               />
             </form>
